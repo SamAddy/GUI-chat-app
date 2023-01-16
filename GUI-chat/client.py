@@ -1,8 +1,36 @@
 import socket
 import threading
+import tkinter
+from tkinter import simpledialog
 
 HOST = '127.0.0.1'
 PORT = 65432
+
+
+class Client:
+    def __init__(self, host, port):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect((host, port))
+
+        message = tkinter.Tk()
+        message.withdraw()
+
+        self.nickname = simpledialog.askstring("Username", "Please choose a username", parent=message)
+
+        self.gui_done = False
+        self.running = True
+
+        gui_thread = threading.Thread(target=gui_loop)
+        receive_thread = threading.Thread(target=receive)
+
+        gui_thread.start()
+        receive_thread.start()
+
+    def gui_loop(self):
+        pass
+
+    def receive(self):
+        pass
 
 
 def listen_for_messages_from_server(client):
