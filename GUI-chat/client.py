@@ -43,7 +43,7 @@ def connect():
     if username != '':
         client.sendall(username.encode())
     else:
-        messagebox.showerror("Invalid username", "Username cannot be empty")
+        messagebox.showerror("Invalid username", "Username cannot be empty!")
 
     threading.Thread(target=listen_for_messages_from_server, args=(client,)).start()
 
@@ -58,6 +58,12 @@ def send_message():
         message_textbox.delete(0, len(message))
     else:
         messagebox.showerror("Empty message", "Message cannot be empty")
+
+
+def stop():
+
+    # TO DO
+    # Should close the socket without any issues when user click close
 
 
 # Frame for GUI
