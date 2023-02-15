@@ -42,7 +42,7 @@ def client_handler(client):
         username = client.recv(2048).decode('utf-8')
         if username != '':
             active_clients.append((username, client))
-            prompt_message = "SERVER~" + f"{username} the chat"
+            prompt_message = "SERVER~" + f"{username} joined the chat"
             send_messages_to_all(prompt_message)
             break
         else:
@@ -80,3 +80,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+"""
+TODO:
+* Get the client to terminate with no errors.
+* Show a notification that client exited just like when a client joins
+* Find out how best to push it online with no issues
+"""

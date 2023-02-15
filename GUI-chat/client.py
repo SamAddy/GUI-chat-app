@@ -64,6 +64,7 @@ def stop():
 
     # TO DO
     # Should close the socket without any issues when user click close
+    pass
 
 
 # Frame for GUI
